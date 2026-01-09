@@ -119,12 +119,6 @@ export class LeadModalComponent implements OnInit {
     name: ['', Validators.required],
     email: ['', [Validators.required, Validators.email]],
     telefone: ['', Validators.required],
-    // Fields below are kept for Supabase interface, but removed from the form UI
-    career_moment: [''],
-    income_range: [''],
-    work_model: [''],
-    has_pj: [''],
-    biggest_difficulty: [''],
     utm_source: [''],
     utm_medium: [''],
     utm_campaign: ['']
@@ -175,16 +169,8 @@ export class LeadModalComponent implements OnInit {
     this.isSubmitting.set(true);
     
     try {
-      const leadData = {
-        name: this.form.value.name,
-        email: this.form.value.email,
-        telefone: this.form.value.telefone,
-        utm_source: this.form.value.utm_source,
-        utm_medium: this.form.value.utm_medium,
-        utm_campaign: this.form.value.utm_campaign,
-      };
-
-      const { error } = await this.supabaseService.addLead(leadData);
+      // The form's value object now directly matches the required data structure.
+      const { error } = await this.supabaseService.addLead(this.form.value);
       
       if (error) {
         console.error('Error saving lead to Supabase:', error);
