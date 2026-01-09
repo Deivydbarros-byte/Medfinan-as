@@ -1,5 +1,6 @@
 
 {
   "framework": null,
-  "installCommand": "echo 'Skipping installation, static site.'"
+  "installCommand": "echo 'Skipping installation, static site.'",
+  "buildCommand": "echo 'Skipping build, static site.'"
 }
